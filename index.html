@@ -10,15 +10,15 @@ body {
     margin: 0;
     height: 100vh;
     background: linear-gradient(#00111a, #003344);
-    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     font-family: Arial, sans-serif;
     color: white;
 }
 
-/* 🎁 Gift */
+/* Gift Box */
 .gift-container {
     text-align: center;
     cursor: pointer;
@@ -62,7 +62,7 @@ body {
     transform: translateY(-50%);
 }
 
-/* 🎄 Tree Container */
+/* Tree Container */
 .tree-container {
     display: none;
     flex-direction: column;
@@ -75,7 +75,7 @@ body {
     to { transform: scale(1); }
 }
 
-/* ⭐ Star */
+/* Star */
 .star {
     width: 0;
     height: 0;
@@ -85,38 +85,33 @@ body {
     margin-bottom: -5px;
 }
 
-/* 🌲 Tree Layers */
-.tree {
-    position: relative;
-    width: 0;
-}
-
+/* Tree Layers */
 .layer {
     width: 0;
-    border-left: 80px solid transparent;
-    border-right: 80px solid transparent;
-    border-bottom: 60px solid #0b8f3c;
-    margin-top: -20px;
+    border-left: 90px solid transparent;
+    border-right: 90px solid transparent;
+    border-bottom: 70px solid #0b8f3c;
+    margin-top: -30px;
 }
 
-/* 🌳 Trunk */
+/* Trunk */
 .trunk {
     width: 30px;
     height: 40px;
     background: #6b3e26;
-    margin: auto;
+    margin-top: -5px;
 }
 
-/* 🎉 Message */
+/* Message */
 .message {
     margin-top: 15px;
     font-size: 26px;
     opacity: 0;
-    animation: fadeIn 2s ease forwards;
+    animation: showText 2s forwards;
     animation-delay: 2.6s;
 }
 
-@keyframes fadeIn {
+@keyframes showText {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
 }
@@ -125,27 +120,25 @@ body {
 
 <body>
 
-<!-- 🎶 Music -->
+<!-- Music -->
 <audio id="music" preload="auto">
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
 
-<!-- 🎁 Gift -->
+<!-- Gift -->
 <div class="gift-container" id="gift">
-    <div class="instruction">Tap / Double-click to open</div>
+    <div class="instruction">Tap or Click to Open</div>
     <div class="gift"></div>
 </div>
 
-<!-- 🎄 Tree -->
+<!-- Tree -->
 <div class="tree-container" id="tree">
     <div class="star"></div>
-    <div class="tree">
-        <div class="layer"></div>
-        <div class="layer"></div>
-        <div class="layer"></div>
-    </div>
+    <div class="layer"></div>
+    <div class="layer"></div>
+    <div class="layer"></div>
     <div class="trunk"></div>
-    <div class="message">🎄 Merry Christmas 🎄</div>
+    <div class="message">Merry Christmas</div>
 </div>
 
 <script>
@@ -155,9 +148,7 @@ function openGift() {
     document.getElementById("music").play();
 }
 
-/* Works on phone & PC */
 document.getElementById("gift").addEventListener("click", openGift);
-document.getElementById("gift").addEventListener("dblclick", openGift);
 </script>
 
 </body>
