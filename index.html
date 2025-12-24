@@ -2,154 +2,47 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Merry Christmas</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Mobile Video</title>
 
 <style>
-body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(#00111a, #003344);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    font-family: Arial, sans-serif;
-    color: white;
-}
+    html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: black;
+        overflow: hidden;
+        touch-action: manipulation;
+    }
 
-/* Gift Box */
-.gift-container {
-    text-align: center;
-    cursor: pointer;
-}
+    .video-container {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-.instruction {
-    margin-bottom: 10px;
-    font-size: 18px;
-    animation: blink 1.5s infinite;
-}
-
-@keyframes blink {
-    50% { opacity: 0.4; }
-}
-
-.gift {
-    width: 140px;
-    height: 140px;
-    background: crimson;
-    position: relative;
-    border-radius: 8px;
-}
-
-.gift::before {
-    content: "";
-    position: absolute;
-    width: 30px;
-    height: 140px;
-    background: gold;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.gift::after {
-    content: "";
-    position: absolute;
-    width: 140px;
-    height: 30px;
-    background: gold;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-/* Tree Container */
-.tree-container {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    animation: growTree 2.5s ease-out forwards;
-}
-
-@keyframes growTree {
-    from { transform: scale(0); }
-    to { transform: scale(1); }
-}
-
-/* Star */
-.star {
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 30px solid gold;
-    margin-bottom: -5px;
-}
-
-/* Tree Layers */
-.layer {
-    width: 0;
-    border-left: 90px solid transparent;
-    border-right: 90px solid transparent;
-    border-bottom: 70px solid #0b8f3c;
-    margin-top: -30px;
-}
-
-/* Trunk */
-.trunk {
-    width: 30px;
-    height: 40px;
-    background: #6b3e26;
-    margin-top: -5px;
-}
-
-/* Message */
-.message {
-    margin-top: 15px;
-    font-size: 26px;
-    opacity: 0;
-    animation: showText 2s forwards;
-    animation-delay: 2.6s;
-}
-
-@keyframes showText {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+    video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* fills screen like TikTok/Reels */
+    }
 </style>
 </head>
 
 <body>
 
-<!-- Music -->
-<audio id="music" preload="auto">
-    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-
-<!-- Gift -->
-<div class="gift-container" id="gift">
-    <div class="instruction">Tap or Click to Open</div>
-    <div class="gift"></div>
+<div class="video-container">
+    <video
+        src="video.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        controls
+    ></video>
 </div>
-
-<!-- Tree -->
-<div class="tree-container" id="tree">
-    <div class="star"></div>
-    <div class="layer"></div>
-    <div class="layer"></div>
-    <div class="layer"></div>
-    <div class="trunk"></div>
-    <div class="message">Merry Christmas</div>
-</div>
-
-<script>
-function openGift() {
-    document.getElementById("gift").style.display = "none";
-    document.getElementById("tree").style.display = "flex";
-    document.getElementById("music").play();
-}
-
-document.getElementById("gift").addEventListener("click", openGift);
-</script>
 
 </body>
 </html>
