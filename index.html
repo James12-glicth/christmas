@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Merry Christmas</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(#00111a, #003344);
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* 🎁 Gift */
+.gift-container {
+    text-align: center;
+    cursor: pointer;
+}
+
+.instruction {
+    margin-bottom: 10px;
+    font-size: 18px;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    50% { opacity: 0.4; }
+}
+
+.gift {
+    width: 140px;
+    height: 140px;
+    background: crimson;
+    position: relative;
+    border-radius: 8px;
+}
+
+.gift::before {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 140px;
+    background: gold;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.gift::after {
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 30px;
+    background: gold;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* 🎄 Tree Container */
+.tree-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    animation: growTree 2.5s ease-out forwards;
+}
+
+@keyframes growTree {
+    from { transform: scale(0); }
+    to { transform: scale(1); }
+}
+
+/* ⭐ Star */
+.star {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 30px solid gold;
+    margin-bottom: -5px;
+}
+
+/* 🌲 Tree Layers */
+.tree {
+    position: relative;
+    width: 0;
+}
+
+.layer {
+    width: 0;
+    border-left: 80px solid transparent;
+    border-right: 80px solid transparent;
+    border-bottom: 60px solid #0b8f3c;
+    margin-top: -20px;
+}
+
+/* 🌳 Trunk */
+.trunk {
+    width: 30px;
+    height: 40px;
+    background: #6b3e26;
+    margin: auto;
+}
+
+/* 🎉 Message */
+.message {
+    margin-top: 15px;
+    font-size: 26px;
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 2.6s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎶 Music -->
+<audio id="music" preload="auto">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🎁 Gift -->
+<div class="gift-container" id="gift">
+    <div class="instruction">Tap / Double-click to open</div>
+    <div class="gift"></div>
+</div>
+
+<!-- 🎄 Tree -->
+<div class="tree-container" id="tree">
+    <div class="star"></div>
+    <div class="tree">
+        <div class="layer"></div>
+        <div class="layer"></div>
+        <div class="layer"></div>
+    </div>
+    <div class="trunk"></div>
+    <div class="message">🎄 Merry Christmas 🎄</div>
+</div>
+
+<script>
+function openGift() {
+    document.getElementById("gift").style.display = "none";
+    document.getElementById("tree").style.display = "flex";
+    document.getElementById("music").play();
+}
+
+/* Works on phone & PC */
+document.getElementById("gift").addEventListener("click", openGift);
+document.getElementById("gift").addEventListener("dblclick", openGift);
+</script>
+
+</body>
+</html>
